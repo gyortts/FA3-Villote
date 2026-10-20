@@ -1,0 +1,4 @@
+<?= view('layout/header') ?><?php $editing=$customer!==null; ?><h1><?= $editing?'Edit Customer':'New Customer' ?></h1><form method="post" action="<?= site_url($editing?'customers/'.$customer['id']:'customers') ?>"><?= csrf_field() ?>
+<label>Full name *</label><input name="full_name" required maxlength="150" value="<?= esc(old('full_name',$customer['full_name']??''),'attr') ?>"><p class="error"><?= esc($errors['full_name']??'') ?></p>
+<label>Email *</label><input name="email" type="email" required value="<?= esc(old('email',$customer['email']??''),'attr') ?>"><p class="error"><?= esc($errors['email']??'') ?></p>
+<label>Phone</label><input name="phone" value="<?= esc(old('phone',$customer['phone']??''),'attr') ?>"><p class="error"><?= esc($errors['phone']??'') ?></p><button>Save Customer</button> <a href="<?= site_url('customers') ?>">Cancel</a></form><?= view('layout/footer') ?>
